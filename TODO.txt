@@ -1,0 +1,12 @@
+# Routes
+
+/catalog
+
+  > search input bar component (filter current books list by name, author ...)
+  > items list
+    > on item click :
+      - modal : update basket qty ...
+
+/basket
+
+  > synthesis ...
