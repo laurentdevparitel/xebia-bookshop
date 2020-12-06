@@ -7,7 +7,8 @@ import './styles/App.css';
 // -- Components
 import ErrorBoundary  from "./components/ErrorBoundary/ErrorBoundary";
 
-import NavBar  from "./components/NavBar/NavBar";
+//import NavBar  from "./components/NavBar/NavBar";
+import SearchAppBar  from "./components/SearchAppBar/SearchAppBar";
 
 // -- Views
 import Home from './views/Home';
@@ -19,7 +20,7 @@ function App() {
     <Router>
       <div className="App">
 
-          <NavBar />
+          <SearchAppBar />
 
           <Switch>
             <ErrorBoundary>
