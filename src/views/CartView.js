@@ -1,9 +1,8 @@
 import React     from 'react';
-//import Cart  from "../components/Cart";
+//import Cart  from "../components/Cart/Cart";
 
-//import './Cart.css';
 
-const Cart = () => {
+const CartView = () => {
     return (
         <div className="cart">
           Cart
@@ -11,4 +10,4 @@ const Cart = () => {
     );
 };
 
-export default Cart;
+export default CartView;

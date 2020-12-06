@@ -7,13 +7,12 @@ import './styles/App.css';
 // -- Components
 import ErrorBoundary  from "./components/ErrorBoundary/ErrorBoundary";
 
-//import NavBar  from "./components/NavBar/NavBar";
 import SearchAppBar  from "./components/SearchAppBar/SearchAppBar";
 
 // -- Views
-import Home from './views/Home';
-import ShowCase from './views/ShowCase';
-import Cart from './views/Cart';
+import HomeView from './views/HomeView';
+import ShowCaseView from './views/ShowCaseView';
+import CartView from './views/CartView';
 
 function App() {
   return (
@@ -24,9 +23,9 @@ function App() {
 
           <Switch>
             <ErrorBoundary>
-              <Route exact path="/" component={Home}/>
-              <Route exact path="/catalog" component={ShowCase}/>
-              <Route exact path="/cart" component={Cart}/>
+              <Route exact path="/" component={HomeView}/>
+              <Route exact path="/catalog" component={ShowCaseView}/>
+              <Route exact path="/cart" component={CartView}/>
             </ErrorBoundary>
           </Switch>
       </div>

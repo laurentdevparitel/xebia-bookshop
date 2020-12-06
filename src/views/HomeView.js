@@ -1,9 +1,7 @@
 import React     from 'react';
 //import Home  from "../components/Home";
 
-//import './Home.css';
-
-const Home = () => {
+const HomeView = () => {
     return (
         <div className="home">
           Home
@@ -11,4 +9,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default HomeView;
