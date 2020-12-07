@@ -35,7 +35,7 @@ function App() {
                     <ShowCaseView />
                   </ErrorBoundary>
               </Route>
-              
+
               <Route exact path="/cart">
                   <ErrorBoundary>
                     <CartView />

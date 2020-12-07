@@ -86,8 +86,7 @@ export default class API {
       const response = await axios.get(APIRoute)
       .then(json => {
           //console.log(`[${this.constructor.name}.getBooks] json`, json);
-          const books = json.data.data;
-          return books;
+          return json.data;
       })
       // .catch(error => {
       //     // TODO : 404 ...
