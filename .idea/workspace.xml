@@ -2,15 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6680f050-1dbb-4237-97bc-d7e82983e89f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/views/ShowCaseView.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TODO.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TODO.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NavBar/NavBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/__NavBar/NavBar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NavBar/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/__NavBar/NavBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/CartView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/HomeView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/ShowCase.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchAppBar/SearchAppBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchAppBar/SearchAppBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ShowCase/ShowCase.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ShowCase/ShowCase.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +45,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1607272080381</updated>
-      <workItem from="1607272084861" duration="4815000" />
+      <workItem from="1607272084861" duration="7471000" />
     </task>
     <servers />
   </component>

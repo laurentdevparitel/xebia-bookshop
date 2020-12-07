@@ -13,6 +13,7 @@ import SearchAppBar  from "./components/SearchAppBar/SearchAppBar";
 import HomeView from './views/HomeView';
 import ShowCaseView from './views/ShowCaseView';
 import CartView from './views/CartView';
+import NoMatchView from './views/NoMatchView';
 
 function App() {
   return (
@@ -22,11 +23,31 @@ function App() {
           <SearchAppBar />
 
           <Switch>
-            <ErrorBoundary>
-              <Route exact path="/" component={HomeView}/>
-              <Route exact path="/catalog" component={ShowCaseView}/>
-              <Route exact path="/cart" component={CartView}/>
-            </ErrorBoundary>
+
+              <Route exact path="/">
+                  <ErrorBoundary>
+                    <HomeView />
+                  </ErrorBoundary>
+              </Route>
+
+              <Route exact path="/catalog">
+                  <ErrorBoundary>
+                    <ShowCaseView />
+                  </ErrorBoundary>
+              </Route>
+              
+              <Route exact path="/cart">
+                  <ErrorBoundary>
+                    <CartView />
+                  </ErrorBoundary>
+              </Route>
+
+              <Route path="*">
+                  <ErrorBoundary>
+                    <NoMatchView />
+                  </ErrorBoundary>
+              </Route>
+
           </Switch>
       </div>
 

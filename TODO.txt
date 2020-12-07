@@ -1,5 +1,8 @@
 # Routes
 
+> ajouter fil ariane
+https://material-ui.com/components/breadcrumbs/
+
 /catalog
 
   > search input bar component (filter current books list by name, author ...)

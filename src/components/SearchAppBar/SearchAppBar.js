@@ -31,7 +31,7 @@ import styles from "./SearchAppBarStyles";
 
 const useStyles = makeStyles(styles);
 
-export default function SearchAppBar() {
+const SearchAppBar = () => {
 
     const classes = useStyles();
     const theme = useTheme();
@@ -118,6 +118,8 @@ export default function SearchAppBar() {
 
             </Drawer>
 
-    </div>
-);
+        </div>
+    );
 }
+
+export default SearchAppBar;
