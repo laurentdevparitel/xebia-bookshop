@@ -1,5 +1,9 @@
 import React, { useState, useEffect }   from 'react';
 
+// -- Material UI
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+
 // -- Components
 import ShowCaseBook from '../ShowCase/ShowCaseBook';
 
@@ -8,12 +12,22 @@ import API from '../../api/API.js';
 
 const api = new API();
 
+const useStyles = makeStyles((theme) => ({
+
+    root: {
+        flexGrow: 1,
+        margin: '80px auto 20px auto'
+    },
+}));
+
 const COMPONENT_NAME = "ShowCase";
 
 const ShowCase = () => {
 
     const [loading, setLoading] = React.useState(true);
     const [books, setBooks] = React.useState([]);
+
+    const classes = useStyles();
 
     useEffect(() => {
 
@@ -54,12 +68,18 @@ const ShowCase = () => {
     }
 
     return (
-        <div className="list">
+
+        <div className={classes.root}>
+
+            <Grid container alignItems="center" spacing={2}>
             {
                 books.map( (book, index) => (
-                    <ShowCaseBook book={book} key={`book-${index}`} />
+                    <Grid key={book.isbn} item>
+                        <ShowCaseBook book={book}  />
+                    </Grid>
                 ))
             }
+            </Grid>
         </div>
     );
 };
