@@ -1,17 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+// -- Redux
+import { Provider } from 'react-redux'
+import store from './redux/store/store'
+
 import App from './App';
 
 import './styles/index.css';
 
 //import reportWebVitals from './reportWebVitals';
 
+const rootElement = document.getElementById('root');
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <Provider store={store}>
+        <React.StrictMode>
+            <App />
+        </React.StrictMode>
+    </Provider>,
+    rootElement
 );
 
 console.log('ENV', process.env);
