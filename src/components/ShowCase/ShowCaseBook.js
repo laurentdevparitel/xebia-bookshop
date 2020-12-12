@@ -41,7 +41,10 @@ const ShowCaseBook = (props) => {
                             {book.title}
                         </Typography>
                         <Typography className={classes.synopsis} variant="body2" color="textSecondary" component="p" align="justify" noWrap={true}>
-                            {book.synopsis}
+                            {book.synopsis[0]}
+                        </Typography>
+                        <Typography className={classes.price}  variant="h6" align="left">
+                            {book.price}€
                         </Typography>
                     </CardContent>
                 </CardActionArea>

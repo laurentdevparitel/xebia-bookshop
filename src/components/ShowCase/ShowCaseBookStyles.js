@@ -8,6 +8,15 @@ const styles = (theme) => ({
         height: 140,
     },
 
+    title: {
+
+    },
+    synopsis: {
+
+    },
+    price: {
+        marginTop: 10
+    },
     cardActions: {
         display: 'block',
         textAlign: 'right'
