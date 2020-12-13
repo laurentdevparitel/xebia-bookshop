@@ -20,8 +20,11 @@ const useStyles = makeStyles((theme) => ({
 
     root: {
         flexGrow: 1,
-        margin: '80px auto 20px auto'
+        margin: '80px auto 20px auto',
     },
+    gridContainer: {
+        justifyContent: 'center'
+    }
 }));
 
 const COMPONENT_NAME = "ShowCase";
@@ -136,7 +139,7 @@ const ShowCase = () => {
 
         <div className={classes.root}>
 
-            <Grid container alignItems="center" spacing={2}>
+            <Grid container alignItems="center" spacing={2} className={classes.gridContainer}>
             {
                 data.map( (book, index) => (
                     <Grid key={book.isbn} item>
