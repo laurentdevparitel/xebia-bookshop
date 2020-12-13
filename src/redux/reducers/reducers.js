@@ -1,6 +1,7 @@
 import {
 
     SET_BOOKS,
+    SET_FILTERED_BOOKS,
     SET_APP_MESSAGE,
     SET_IS_XHR_RUNNING,
 
@@ -9,12 +10,13 @@ import {
 
 const initialState = {
 
-    books: [],
-    appMessage: {   // messages success / error de l'app (cf: MuiAlert)
-        text: null,   // contenu du message
+    books: [],  // fetched books from API
+    filteredBooks: null,  // filtered books from search input
+    appMessage: {   // app success / error messages (cf: MuiAlert)
+        text: null,   // message
         severity: "success"    // success|warning|info|error
     },
-    isXHRRunning: false,    // requête XHR en cours ou non
+    isXHRRunning: false,    // is XHR request running ?
 };
 
 /*
@@ -29,6 +31,9 @@ const rootReducer = (state = initialState, action) => {
 
         case SET_BOOKS:
             return { ...state, books: action.payload };
+
+        case SET_FILTERED_BOOKS:
+            return { ...state, filteredBooks: action.payload };
 
         case SET_APP_MESSAGE:
             return { ...state, appMessage: action.payload };

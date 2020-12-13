@@ -1,6 +1,9 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
+// -- Redux
+import { useDispatch, useSelector } from "react-redux";
+
 // -- Material UI
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -31,10 +34,19 @@ import styles from "./SearchAppBarStyles";
 
 const useStyles = makeStyles(styles);
 
+const COMPONENT_NAME = "SearchAppBar";
+
 const SearchAppBar = () => {
 
     const classes = useStyles();
     const theme = useTheme();
+
+    // Redux
+    const { books } = useSelector(state => ({
+        books: state.books,
+    }));
+
+    const dispatch = useDispatch();
 
     const REACT_APP_APP_NAME = process.env.REACT_APP_APP_NAME;
 
@@ -47,6 +59,18 @@ const SearchAppBar = () => {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
+    const handleSearchFilterChange = (e) => {
+        const PATTERN = new RegExp(e.target.value, 'i');
+        console.info(`[${COMPONENT_NAME}.handleSearchFilterChange] PATTERN`, PATTERN);
+
+        const filteredBooks = books.filter( book => PATTERN.test(book.title) );
+        //const filteredBooks = books.filter( book => book.title.includes(e.target.value));
+        console.info(`[${COMPONENT_NAME}.handleSearchFilterChange] filteredBooks:`, filteredBooks);
+
+        // Redux storage;
+        dispatch({type: "SET_FILTERED_BOOKS", payload: filteredBooks});
+    }
 
     return (
         <div className={classes.root}>
@@ -75,6 +99,7 @@ const SearchAppBar = () => {
                                 input: classes.inputInput,
                             }}
                             inputProps={{'aria-label': 'search'}}
+                            onChange={handleSearchFilterChange}
                         />
                     </div>
                 </Toolbar>

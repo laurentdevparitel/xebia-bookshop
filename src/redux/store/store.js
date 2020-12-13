@@ -42,4 +42,6 @@ if (resetStore){
 //return { store, persistor }
 //}
 
-export {store, persistor};
+
+export default store;
+//export default ({store, persistor});

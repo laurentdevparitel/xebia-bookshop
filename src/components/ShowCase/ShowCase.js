@@ -1,5 +1,8 @@
 import React, { useState, useEffect }   from 'react';
 
+// -- Redux
+import { useDispatch, useSelector } from "react-redux";
+
 // -- Material UI
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -27,9 +30,19 @@ const ShowCase = () => {
     const [loading, setLoading] = React.useState(true);
     const [books, setBooks] = React.useState([]);
 
+    // Redux
+    const dispatch = useDispatch();
+
+    const { filteredBooks } = useSelector(state => ({
+        filteredBooks: state.filteredBooks,
+    }));
+
+    // Styles
     const classes = useStyles();
 
     useEffect(() => {
+
+        dispatch({type: "SET_IS_XHR_RUNNING", payload: true});
 
         setLoading(true);
 
@@ -56,6 +69,12 @@ const ShowCase = () => {
                 console.debug(`[${COMPONENT_NAME}.useEffect] fetchedBooks: `, fetchedBooks);
 
                 setBooks(fetchedBooks);
+
+                // Redux storage;
+                dispatch({type: "SET_BOOKS", payload: fetchedBooks});
+                dispatch({type: "SET_IS_XHR_RUNNING", payload: false});
+
+                // hide loader
                 setLoading(false);
             }
 
@@ -67,13 +86,15 @@ const ShowCase = () => {
         return <p>loading...</p>;
     }
 
+    const data = filteredBooks ? filteredBooks  : books;
+
     return (
 
         <div className={classes.root}>
 
             <Grid container alignItems="center" spacing={2}>
             {
-                books.map( (book, index) => (
+                data.map( (book, index) => (
                     <Grid key={book.isbn} item>
                         <ShowCaseBook book={book}  />
                     </Grid>
