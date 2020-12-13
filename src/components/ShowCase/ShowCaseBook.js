@@ -28,10 +28,27 @@ const ShowCaseBook = (props) => {
         setBook(props.book);
     }, [props]);
 
+    /**
+     * CardActionArea click
+     * @returns void
+     */
+    const handleClickCardActionArea = () => {
+        console.info(`[${COMPONENT_NAME}.handleClickCardActionArea] props`, props);
+
+        // Passing data to parent component
+        props.onClickCardActionArea(book);
+    };
+
+    const handleAddToBasket = () => {
+
+        // Passing data to parent component
+        props.handleAddToBasket(book);
+    }
+
     return (
         <div className="book">
             <Card className={classes.root}>
-                <CardActionArea>
+                <CardActionArea onClick={handleClickCardActionArea}>
                     <CardMedia
                         className={classes.media}
                         image={book.cover}
@@ -50,7 +67,7 @@ const ShowCaseBook = (props) => {
                     </CardContent>
                 </CardActionArea>
                 <CardActions className={classes.cardActions}>
-                    <Button size="small" color="primary" className={classes.addToBasketBtn}>
+                    <Button size="small" color="primary" className={classes.addToBasketBtn} onClick={handleAddToBasket}>
                         Add to basket
                     </Button>
                 </CardActions>

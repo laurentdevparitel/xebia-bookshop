@@ -1,6 +1,9 @@
 
 const styles = (theme) => ({
 
+    /*
+    * ShowCaseBook
+    */
     root: {
         maxWidth: 345,
     },
@@ -23,7 +26,26 @@ const styles = (theme) => ({
     },
     addToBasketBtn: {
 
-    }
+    },
+
+    /*
+     * ShowCaseBookDialog
+     */
+    dialogCart: {
+
+    },
+    dialogCartMedia: {
+        maxWidth: 340,
+        height: 500,
+        margin: '10px auto 0px auto'
+    },
+    appBar: {
+        position: 'relative',
+    },
+    appBarTitle: {
+        marginLeft: theme.spacing(2),
+        flex: 1,
+    },
 });
 
 export default styles;
