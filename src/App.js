@@ -1,5 +1,5 @@
 
-import {BrowserRouter as Router, Route, Switch}  from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, Redirect}  from 'react-router-dom';
 
 //import logo from './images/logo.svg';
 import './styles/App.css';
@@ -15,6 +15,8 @@ import ShowCaseView from './views/ShowCaseView';
 import CartView from './views/CartView';
 import NoMatchView from './views/NoMatchView';
 
+const IS_HOME_PAGE_COMPLETED  = false;
+
 function App() {
   return (
     <Router>
@@ -26,7 +28,7 @@ function App() {
 
               <Route exact path="/">
                   <ErrorBoundary>
-                    <HomeView />
+                      { IS_HOME_PAGE_COMPLETED ? <HomeView /> : <Redirect to="/catalog" /> }
                   </ErrorBoundary>
               </Route>
 
