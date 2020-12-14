@@ -4,6 +4,8 @@ import {Link} from "react-router-dom";
 // -- Redux
 import { useDispatch, useSelector } from "react-redux";
 
+import { searchOnProperty } from '../../helpers/helpers';
+
 // -- Material UI
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -69,17 +71,13 @@ const SearchAppBar = () => {
     };
 
     /**
-     * Filtering on books
+     * Filtering on local books
      * @param {Event} e
      * @returns void
      */
     const handleSearchFilterChange = (e) => {
-        const PATTERN = new RegExp(e.target.value, 'i');
-        console.info(`[${COMPONENT_NAME}.handleSearchFilterChange] PATTERN`, PATTERN);
-
-        const filteredBooks = books.filter( book => PATTERN.test(book.title) );
-        //const filteredBooks = books.filter( book => book.title.includes(e.target.value));
-        console.info(`[${COMPONENT_NAME}.handleSearchFilterChange] filteredBooks:`, filteredBooks);
+    
+        const filteredBooks = searchOnProperty(books, e.target.value, 'title');
 
         // Redux storage
         dispatch({type: "SET_KEYWORD_SEARCH", payload: e.target.value});
