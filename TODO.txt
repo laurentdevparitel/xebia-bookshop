@@ -5,10 +5,10 @@ https://material-ui.com/components/breadcrumbs/
 
 /catalog
 
-  > search input bar component (filter current books list by name, author ...)
+  > [OK] search input bar component (filter current books list by name, author ...)
   > items list
     > on item click :
-      - modal : all book info, update basket qty ...
+      - [OK] modal : all book info, update basket qty ...
 
 /basket
 

@@ -10,6 +10,7 @@ import Grid from '@material-ui/core/Grid';
 // -- Components
 import ShowCaseBook from '../ShowCase/ShowCaseBook';
 import ShowCaseBookDialog from '../ShowCase/ShowCaseBookDialog';
+import Loader from '../Loader/Loader';
 
 // -- API
 import API from '../../api/API.js';
@@ -129,8 +130,10 @@ const ShowCase = () => {
         console.info(`[${COMPONENT_NAME}.handleAddToBasket]`, book);
     }
 
-    if (loading) {  // TODO : add Backdrop loader
-        return <p>loading...</p>;
+    if (loading) {
+        return (
+            <Loader />
+        )
     }
 
     const data = filteredBooks ? filteredBooks  : books;
