@@ -93,9 +93,15 @@ export default function ShowCaseBookDialog(props) {
                             <Typography className={classes.title} gutterBottom variant="h5" component="h2" align="left">
                                 {book.title}
                             </Typography>
-                            <Typography className={classes.synopsis} variant="body2" color="textSecondary" component="p" align="justify" >
-                                {book.synopsis[0]}
-                            </Typography>
+
+                            {
+                                book.synopsis.map(s => (
+                                    <Typography className={classes.synopsis} gutterBottom variant="body2" color="textSecondary" component="p" align="justify" >
+                                        {s}
+                                    </Typography>
+                                ))
+                            }
+
                             <Typography className={classes.price}  variant="h6" align="left">
                                 {book.price}€
                             </Typography>

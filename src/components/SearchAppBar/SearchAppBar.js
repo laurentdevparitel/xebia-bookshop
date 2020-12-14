@@ -76,7 +76,7 @@ const SearchAppBar = () => {
      * @returns void
      */
     const handleSearchFilterChange = (e) => {
-    
+
         const filteredBooks = searchOnProperty(books, e.target.value, 'title');
 
         // Redux storage
