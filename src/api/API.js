@@ -28,7 +28,7 @@ export default class API {
     static handleAPIErrorMessages(error) {
         //console.info(`[API.handleAPIErrorMessages] error:`, error);
 
-        let errorMessage = {
+        const errorMessage = {
             title: "",
             body: ""
         };

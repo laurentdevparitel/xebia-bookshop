@@ -14,6 +14,7 @@ import Loader from '../Loader/Loader';
 
 // -- API
 import API from '../../api/API.js';
+import Typography from "@material-ui/core/Typography";
 
 const api = new API();
 
@@ -40,8 +41,9 @@ const ShowCase = () => {
     // Redux
     const dispatch = useDispatch();
 
-    const { filteredBooks } = useSelector(state => ({
+    const { filteredBooks, keywordSearch } = useSelector(state => ({
         filteredBooks: state.filteredBooks,
+        keywordSearch: state.keywordSearch,
     }));
 
     // Styles
@@ -73,7 +75,7 @@ const ShowCase = () => {
             })
 
             if (typeof fetchedBooks !== "undefined"){
-                console.debug(`[${COMPONENT_NAME}.useEffect] fetchedBooks: `, fetchedBooks);
+                //console.debug(`[${COMPONENT_NAME}.useEffect] fetchedBooks: `, fetchedBooks);
 
                 setBooks(fetchedBooks);
 
@@ -137,13 +139,16 @@ const ShowCase = () => {
     }
 
     const data = filteredBooks ? filteredBooks  : books;
+    console.info(`[${COMPONENT_NAME}] data`, data);
 
     return (
 
         <div className={classes.root}>
 
             <Grid container alignItems="center" spacing={2} className={classes.gridContainer}>
-            {
+            {(
+                data.length ?
+
                 data.map( (book, index) => (
                     <Grid key={book.isbn} item>
                         <ShowCaseBook
@@ -151,8 +156,11 @@ const ShowCase = () => {
                             onClickCardActionArea={handleOpenShowCaseBookDialog}
                             handleAddToBasket={handleAddToBasket} />
                     </Grid>
-                ))
-            }
+                )) :
+                    <Typography variant="body1">
+                        `Oups ... No reference was found with the keyword search <b>{keywordSearch}</b> ...`
+                    </Typography>
+            )}
             </Grid>
 
             <ShowCaseBookDialog

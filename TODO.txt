@@ -1,7 +1,7 @@
 # Routes
 
-> ajouter fil ariane
-https://material-ui.com/components/breadcrumbs/
+> breadcrumbs
+cf: https://material-ui.com/components/breadcrumbs/
 
 /catalog
 

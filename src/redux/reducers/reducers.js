@@ -2,6 +2,7 @@ import {
 
     SET_BOOKS,
     SET_FILTERED_BOOKS,
+    SET_KEYWORD_SEARCH,
     SET_APP_MESSAGE,
     SET_IS_XHR_RUNNING,
 
@@ -12,6 +13,7 @@ const initialState = {
 
     books: [],  // fetched books from API
     filteredBooks: null,  // filtered books from search input
+    keywordSearch: null,    // search by keyword(s)
     appMessage: {   // app success / error messages (cf: MuiAlert)
         text: null,   // message
         severity: "success"    // success|warning|info|error
@@ -34,6 +36,9 @@ const rootReducer = (state = initialState, action) => {
 
         case SET_FILTERED_BOOKS:
             return { ...state, filteredBooks: action.payload };
+
+        case SET_KEYWORD_SEARCH:
+            return { ...state, keywordSearch: action.payload };
 
         case SET_APP_MESSAGE:
             return { ...state, appMessage: action.payload };

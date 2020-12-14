@@ -52,14 +52,27 @@ const SearchAppBar = () => {
 
     const [open, setOpen] = React.useState(false);
 
+    /**
+     * Open drawer
+     * @returns void
+     */
     const handleDrawerOpen = () => {
         setOpen(true);
     };
 
+    /**
+     * Close drawer
+     * @returns void
+     */
     const handleDrawerClose = () => {
         setOpen(false);
     };
 
+    /**
+     * Filtering on books
+     * @param {Event} e
+     * @returns void
+     */
     const handleSearchFilterChange = (e) => {
         const PATTERN = new RegExp(e.target.value, 'i');
         console.info(`[${COMPONENT_NAME}.handleSearchFilterChange] PATTERN`, PATTERN);
@@ -68,7 +81,8 @@ const SearchAppBar = () => {
         //const filteredBooks = books.filter( book => book.title.includes(e.target.value));
         console.info(`[${COMPONENT_NAME}.handleSearchFilterChange] filteredBooks:`, filteredBooks);
 
-        // Redux storage;
+        // Redux storage
+        dispatch({type: "SET_KEYWORD_SEARCH", payload: e.target.value});
         dispatch({type: "SET_FILTERED_BOOKS", payload: filteredBooks});
     }
 

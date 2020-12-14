@@ -40,7 +40,10 @@ export default function ShowCaseBookDialog(props) {
         setOpen(props.open);
     }, [props])
 
-
+    /**
+     * Close Dialog
+     * @returns void
+     */
     const handleClose = () => {
         setOpen(false);
 
@@ -48,6 +51,10 @@ export default function ShowCaseBookDialog(props) {
         props.handleClose();
     };
 
+    /**
+     * Add item to basket
+     * @returns void
+     */
     const handleAddToBasket = () => {
 
         // Passing data to parent component

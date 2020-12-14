@@ -33,12 +33,16 @@ const ShowCaseBook = (props) => {
      * @returns void
      */
     const handleClickCardActionArea = () => {
-        console.info(`[${COMPONENT_NAME}.handleClickCardActionArea] props`, props);
+        //console.info(`[${COMPONENT_NAME}.handleClickCardActionArea] props`, props);
 
         // Passing data to parent component
         props.onClickCardActionArea(book);
     };
 
+    /**
+     * Add item to basket
+     * @returns void
+     */
     const handleAddToBasket = () => {
 
         // Passing data to parent component
