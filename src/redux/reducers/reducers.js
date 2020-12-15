@@ -6,6 +6,9 @@ import {
     SET_APP_MESSAGE,
     SET_IS_XHR_RUNNING,
 
+    ADD_CART_ARTICLE,
+    REMOVE_CART_ARTICLE,
+
 } from "../constants/action-types.js";
 
 
@@ -19,6 +22,11 @@ const initialState = {
         severity: "success"    // success|warning|info|error
     },
     isXHRRunning: false,    // is XHR request running ?
+
+    cart: { // current cart
+        articles: [],
+        updated_at: null,
+    },
 };
 
 /*
@@ -29,6 +37,9 @@ const initialState = {
 */
 
 const rootReducer = (state = initialState, action) => {
+
+    let cart;
+
     switch (action.type) {
 
         case SET_BOOKS:
@@ -46,6 +57,21 @@ const rootReducer = (state = initialState, action) => {
         case SET_IS_XHR_RUNNING:
             return { ...state, isXHRRunning: action.payload };
 
+
+        case ADD_CART_ARTICLE:
+            cart = {
+                articles: state.cart.articles.concat(action.payload),
+                updated_at: new Date(),
+            }
+            return { ...state, cart: cart};
+
+        case REMOVE_CART_ARTICLE:
+            cart = {
+                articles: state.cart.articles.filter((item) => item.isbn !== action.payload.isbn),
+                updated_at: new Date(),
+            }
+            return { ...state, cart: cart };
+
         default:
             return state;
     }
@@ -57,5 +83,6 @@ const removeItem = (items, index) =>
     items.filter(function(value, i) {
         return i !== index;
     });
+
 
 export default rootReducer;

@@ -130,6 +130,9 @@ const ShowCase = () => {
      */
     const handleAddToBasket = (book) => {
         console.info(`[${COMPONENT_NAME}.handleAddToBasket]`, book);
+
+        // Redux storage;
+        dispatch({type: "ADD_CART_ARTICLE", payload: book});
     }
 
     if (loading) {
