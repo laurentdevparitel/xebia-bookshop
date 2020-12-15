@@ -19,6 +19,7 @@ import Divider from '@material-ui/core/Divider';
 
 import {makeStyles, useTheme} from '@material-ui/core/styles';
 
+import Badge from '@material-ui/core/Badge';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
@@ -30,6 +31,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import HomeIcon from '@material-ui/icons/Home';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
+
 
 // -- Component styles
 import styles from "./SearchAppBarStyles";
@@ -44,8 +46,9 @@ const SearchAppBar = () => {
     const theme = useTheme();
 
     // Redux
-    const { books } = useSelector(state => ({
+    const { books, cart } = useSelector(state => ({
         books: state.books,
+        cart: state.cart,
     }));
 
     const dispatch = useDispatch();
@@ -84,6 +87,25 @@ const SearchAppBar = () => {
         dispatch({type: "SET_FILTERED_BOOKS", payload: filteredBooks});
     }
 
+    /**
+     * Returns distinct articles from cart
+     * @param {Object} cart
+     * @returns array
+     */
+    const getDistinctCartArticles = (cart) => {
+
+        const unique_articles = {};
+        let isbn;
+
+        cart.articles.map(article => {
+            isbn = article.isbn;
+            unique_articles[isbn] = article;
+        })
+
+        return Object.keys(unique_articles);
+    }
+    console.info(`[${COMPONENT_NAME}] getDistinctCartArticles: `, getDistinctCartArticles(cart));
+
     return (
         <div className={classes.root}>
             <AppBar position="fixed">
@@ -114,6 +136,12 @@ const SearchAppBar = () => {
                             onChange={handleSearchFilterChange}
                         />
                     </div>
+
+                    <IconButton aria-label="show 4 article(s)" color="inherit">
+                        <Badge badgeContent={getDistinctCartArticles(cart).length} color="secondary">
+                            <ShoppingCartIcon />
+                        </Badge>
+                    </IconButton>
                 </Toolbar>
             </AppBar>
 
