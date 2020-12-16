@@ -28,6 +28,8 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+
 import HomeIcon from '@material-ui/icons/Home';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
@@ -73,6 +75,10 @@ const SearchAppBar = () => {
      * @returns void
      */
     const handleDrawerClose = () => {
+        setOpen(false);
+    };
+
+    const handleClickAway = () => {
         setOpen(false);
     };
 
@@ -136,44 +142,49 @@ const SearchAppBar = () => {
                 </Toolbar>
             </AppBar>
 
-            <Drawer
-                className={classes.drawer}
-                variant="persistent"
-                anchor="left"
-                open={open}
-                classes={{
-                    paper: classes.drawerPaper,
-                }}
+            <ClickAwayListener
+                mouseEvent="onMouseDown"
+                touchEvent="onTouchStart"
+                onClickAway={handleClickAway}
             >
-                <div className={classes.drawerHeader}>
-                    <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'ltr' ? <ChevronLeftIcon/> : <ChevronRightIcon/>}
-                    </IconButton>
-                </div>
-                <Divider/>
-                <List>
-                    <ListItem button>
-                        <ListItemIcon><HomeIcon/></ListItemIcon>
-                        <ListItemText>
-                            <Link to="/">Home</Link>
-                        </ListItemText>
-                    </ListItem>
-                    <ListItem button>
-                        <ListItemIcon><LibraryBooksIcon/></ListItemIcon>
-                        <ListItemText>
-                            <Link to="/catalog">Catalog</Link>
-                        </ListItemText>
-                    </ListItem>
-                    <ListItem button>
-                        <ListItemIcon><ShoppingCartIcon/></ListItemIcon>
-                        <ListItemText>
-                            <Link to="/cart">Cart</Link>
-                        </ListItemText>
-                    </ListItem>
-                </List>
+                <Drawer
+                    className={classes.drawer}
+                    variant="persistent"
+                    anchor="left"
+                    open={open}
+                    classes={{
+                        paper: classes.drawerPaper,
+                    }}
+                >
+                    <div className={classes.drawerHeader}>
+                        <IconButton onClick={handleDrawerClose}>
+                            {theme.direction === 'ltr' ? <ChevronLeftIcon/> : <ChevronRightIcon/>}
+                        </IconButton>
+                    </div>
+                    <Divider/>
+                    <List>
+                        <ListItem button>
+                            <ListItemIcon><HomeIcon/></ListItemIcon>
+                            <ListItemText>
+                                <Link to="/">Home</Link>
+                            </ListItemText>
+                        </ListItem>
+                        <ListItem button>
+                            <ListItemIcon><LibraryBooksIcon/></ListItemIcon>
+                            <ListItemText>
+                                <Link to="/catalog">Catalog</Link>
+                            </ListItemText>
+                        </ListItem>
+                        <ListItem button>
+                            <ListItemIcon><ShoppingCartIcon/></ListItemIcon>
+                            <ListItemText>
+                                <Link to="/cart">Cart</Link>
+                            </ListItemText>
+                        </ListItem>
+                    </List>
 
-            </Drawer>
-
+                </Drawer>
+            </ClickAwayListener>
         </div>
     );
 }
