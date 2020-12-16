@@ -152,8 +152,8 @@ export const getArticleQuantity = (articles = [], id) => {
  * @param {Int} id
  * @returns Float
  */
-export const getDiscount = (cartSummary, commercialOffers) => {
-    //console.info(`[${FILE_NAME}.getDiscount]`, cartSummary, commercialOffers);
+export const getDiscountFromCommercialOffers = (cartSummary, commercialOffers) => {
+    //console.info(`[${FILE_NAME}.getDiscountFromCommercialOffers]`, cartSummary, commercialOffers);
 
     const total_amount_without_discount = cartSummary.total_amount_without_taxes;   // NB : HT !
     let discount = 0;
@@ -186,7 +186,7 @@ export const getDiscount = (cartSummary, commercialOffers) => {
                 break;
         }
     }
-    //console.log(`[${FILE_NAME}.getDiscount] discounts:`, discounts);
+    //console.log(`[${FILE_NAME}.getDiscountFromCommercialOffers] discounts:`, discounts);
 
     // get best discount
     const sortables = [];
@@ -197,7 +197,7 @@ export const getDiscount = (cartSummary, commercialOffers) => {
     sortables.sort((a,b) => {
         return b - a;
     });
-    //console.log(`[${FILE_NAME}.getDiscount] sortables:`, sortables);
+    //console.log(`[${FILE_NAME}.getDiscountFromCommercialOffers] sortables:`, sortables);
 
     discount = sortables.shift();
 
