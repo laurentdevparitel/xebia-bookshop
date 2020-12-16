@@ -72,6 +72,49 @@ const Cart = () => {
     const cartSummary = getCartSummary(cart);
     console.info(`[${COMPONENT_NAME}] cartSummary: `, cartSummary);
 
+    /**
+     * Return true if cart discounted
+     * @returns Boolean
+     */
+    const hasDiscount = () => {
+        console.info(`[${COMPONENT_NAME}].hasDiscount cart.discount: `, cart.discount);
+        return cart.discount > 0;
+    }
+
+    /**
+     * Return Discount
+     * @returns Float
+     */
+    const getDiscount = () => {
+        return cart.discount
+    }
+
+    /**
+     * Return TotalAmountWithoutTaxes
+     * @returns Float
+     */
+    const getTotalAmountWithoutTaxes = () => {
+        return cartSummary.total_amount_without_taxes
+    }
+    /**
+     * Return TotalTaxes
+     * @returns Float
+     */
+    const getTotalTaxes = () => {
+        return cartSummary.taxes
+    }
+
+    /**
+     * Return TotalAmountWithTaxes
+     * @returns Float
+     */
+    const getTotalAmountWithTaxes = () => {
+        if (hasDiscount()){
+            return cartSummary.total_amount_with_taxes - cart.discount;
+        }
+        return cartSummary.total_amount_with_taxes
+    }
+
     useEffect(() => {
 
         setLoading(true);
@@ -165,18 +208,29 @@ const Cart = () => {
                         ))}
 
                         <TableRow>
-                            <TableCell rowSpan={3}/>
+                            <TableCell rowSpan={ (hasDiscount() ? 4 : 3) }/>
                             <TableCell colSpan={1}>Subtotal</TableCell>
-                            <TableCell align="right">{ccyFormat(cartSummary.total_amount_without_taxes)} €</TableCell>
+                            <TableCell align="right">{ccyFormat(getTotalAmountWithoutTaxes())} €</TableCell>
                         </TableRow>
+
                         <TableRow>
                             <TableCell colSpan={1}>Tax {`${(TAX_RATE * 100)} %`}</TableCell>
-                            <TableCell align="right">{ccyFormat(cartSummary.taxes)} €</TableCell>
+                            <TableCell align="right">{ccyFormat(getTotalTaxes())} €</TableCell>
                         </TableRow>
+
+                        {
+                            hasDiscount() ?
+
+                                <TableRow>
+                                    <TableCell colSpan={1}>Discount</TableCell>
+                                    <TableCell align="right">- {ccyFormat(getDiscount())} €</TableCell>
+                                </TableRow> : ''
+                        }
+
                         <TableRow>
                             <TableCell colSpan={1}><b>Total</b></TableCell>
                             <TableCell
-                                align="right"><b>{ccyFormat(cartSummary.total_amount_with_taxes)} €</b></TableCell>
+                                align="right"><b>{ccyFormat( getTotalAmountWithTaxes()) } €</b></TableCell>
                         </TableRow>
                     </TableBody>
                 </Table>

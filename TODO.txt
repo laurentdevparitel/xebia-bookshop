@@ -12,8 +12,11 @@ cf: https://material-ui.com/components/breadcrumbs/
 
 /basket
 
-  > synthesis ...
+  > [OK]synthesis ...
 
+[Fixes]
+
+! discount computing on add/remove item ...
 
 
 Utils

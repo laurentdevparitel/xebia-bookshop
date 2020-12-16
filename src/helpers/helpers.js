@@ -214,7 +214,7 @@ export const getDiscount = (cartSummary, commercialOffers) => {
  * @returns String
  */
 export const ccyFormat = (num) => {
-    return `${num.toFixed(2)}`;
+    return typeof (num) !== "undefined" ? `${num.toFixed(2)}` : 0;
 }
 
 //-------------------------------------------------------------------------
