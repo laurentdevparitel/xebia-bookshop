@@ -8,6 +8,7 @@ import {
 
     ADD_CART_ARTICLE,
     REMOVE_CART_ARTICLE,
+    SET_CART_DISCOUNT,
 
 } from "../constants/action-types.js";
 
@@ -20,3 +21,4 @@ export const setIsXHRRunning = isXHRRunning => ({ type: SET_IS_XHR_RUNNING, payl
 
 export const addCartArticle = article => ({ type: ADD_CART_ARTICLE, payload: article });
 export const removeCartArticle = article => ({ type: REMOVE_CART_ARTICLE, payload: article });
+export const setCartDiscount = discount => ({ type: SET_CART_DISCOUNT, payload: discount });

@@ -111,6 +111,8 @@ const Cart = () => {
                 const discount = getDiscount(cartSummary, fetchedBookCommercialOffers);
                 console.debug(`[${COMPONENT_NAME}.useEffect] discount: `, discount);
 
+                dispatch({type: "SET_CART_DISCOUNT", payload: discount});
+
                 // hide loader
                 setLoading(false);
                 dispatch({type: "SET_IS_XHR_RUNNING", payload: loading});

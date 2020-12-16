@@ -5,8 +5,9 @@
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Cart/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Cart/Cart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ShowCase/ShowCaseBookDialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ShowCase/ShowCaseBookDialog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/helpers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ShowCase/ShowCase.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ShowCase/ShowCase.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/actions/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/actions/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/constants/action-types.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/constants/action-types.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/reducers/reducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducers/reducers.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +57,7 @@
       <option name="presentableId" value="Default" />
       <updated>1607272080381</updated>
       <workItem from="1607272084861" duration="18032000" />
-      <workItem from="1607786383901" duration="57034000" />
+      <workItem from="1607786383901" duration="57757000" />
     </task>
     <servers />
   </component>

@@ -8,6 +8,7 @@ import {
 
     ADD_CART_ARTICLE,
     REMOVE_CART_ARTICLE,
+    SET_CART_DISCOUNT,
 
 } from "../constants/action-types.js";
 
@@ -69,6 +70,14 @@ const rootReducer = (state = initialState, action) => {
         case REMOVE_CART_ARTICLE:
             cart = {
                 articles: state.cart.articles.filter((item) => item.isbn !== action.payload.isbn),
+                updated_at: new Date(),
+            }
+            return { ...state, cart: cart };
+
+        case SET_CART_DISCOUNT:
+            cart = {
+                ...state.cart,
+                discount: action.payload,
                 updated_at: new Date(),
             }
             return { ...state, cart: cart };
