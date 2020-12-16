@@ -15,6 +15,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Typography from "@material-ui/core/Typography";
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 // -- API
 import API from '../../api/API.js';
@@ -32,6 +34,9 @@ const useStyles = makeStyles((theme) => ({
     table: {
         minWidth: 650,
     },
+    tableCellBtn: {
+        padding: 0
+    },
 }));
 
 const COMPONENT_NAME = "Cart";
@@ -45,6 +50,20 @@ const Cart = () => {
     const { cart } = useSelector(state => ({
         cart: state.cart,
     }));
+
+    const dispatch = useDispatch();
+
+    /**
+     * Remove cart article
+     * @param {Object} article
+     * @returns void
+     */
+    const handleRemoveCartArticle = (article) => {
+        //console.info(`[${COMPONENT_NAME}] handleRemoveCartArticle: `, article);
+
+        // Redux storage
+        dispatch({type: "REMOVE_CART_ARTICLE", payload: article});
+    }
 
     const cartSummary = getCartSummary(cart);
     console.info(`[${COMPONENT_NAME}] cartSummary: `, cartSummary);
@@ -64,7 +83,7 @@ const Cart = () => {
                             <TableCell align="left">Article</TableCell>
                             <TableCell align="center">Quantity</TableCell>
                             <TableCell align="right">Price</TableCell>
-                            <TableCell align="right">Actions</TableCell>
+                            <TableCell align="center">Actions</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -74,8 +93,14 @@ const Cart = () => {
                                     {article.title}
                                 </TableCell>
                                 <TableCell align="center">{article.qty}</TableCell>
-                                <TableCell align="right">{article.total_amount_without_taxes} €</TableCell>
-                                <TableCell align="right"></TableCell>
+                                <TableCell align="right">{ccyFormat(article.total_amount_without_taxes)} €</TableCell>
+                                <TableCell align="center">
+                                    <IconButton
+                                        className={classes.tableCellBtn} aria-label="delete" color="primary"
+                                        onClick={ e => handleRemoveCartArticle(article) } >
+                                        <DeleteIcon />
+                                    </IconButton>
+                                </TableCell>
                             </TableRow>
                         ))}
 

@@ -93,7 +93,7 @@ const ShowCase = () => {
 
     /**
      * Open ShowCaseBookDialog
-     * @param {obj} book
+     * @param {Object} book
      * @returns void
      */
     const handleOpenShowCaseBookDialog = (book) => {
@@ -109,7 +109,7 @@ const ShowCase = () => {
 
     /**
      * Close ShowCaseBookDialog
-     * @param {obj} book
+     * @param {Object} book
      * @returns void
      */
     const handleCloseShowCaseBookDialog = () => {
@@ -125,7 +125,7 @@ const ShowCase = () => {
 
     /**
      * Add book to basket
-     * @param {obj} book
+     * @param {Object} book
      * @returns void
      */
     const handleAddToBasket = (book) => {
