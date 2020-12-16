@@ -1,9 +1,8 @@
 import { createStore } from "redux";
-
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web and AsyncStorage for react-native
 
-import rootReducer from "../reducers/reducers.js";
+import rootReducer from "../reducers/reducers";
 
 const persistConfig = {
     key: 'root',
@@ -17,6 +16,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 //export default () => {  // KO
 const store = createStore(persistedReducer)
 store.subscribe(() => console.log('----> Redux action called !'))
+
 const persistor = persistStore(store)
 
 // Init store by passing URL param... TODO: add INI_STORE action || call component
@@ -32,6 +32,7 @@ const resetStore = true; // DEV
 //   console.log('resetStore called by window.location.hash')
 //   resetStore = true;
 // }
+//}
 
 if (resetStore){
     persistor.purge().then(() => {
@@ -39,9 +40,10 @@ if (resetStore){
     })
 }
 
+//export default store;
 //return { store, persistor }
-//}
 
-
-export default store;
-//export default ({store, persistor});
+/*export default () => {
+    return { store, persistor }
+}*/
+export {store, persistor};

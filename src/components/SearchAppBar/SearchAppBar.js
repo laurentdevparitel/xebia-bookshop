@@ -1,10 +1,10 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 
 // -- Redux
 import { useDispatch, useSelector } from "react-redux";
 
-import { searchOnProperty } from '../../helpers/helpers';
+import { searchOnProperty, getDistinctCartArticles } from '../../helpers/helpers';
 
 // -- Material UI
 import AppBar from '@material-ui/core/AppBar';
@@ -57,6 +57,9 @@ const SearchAppBar = () => {
 
     const [open, setOpen] = React.useState(false);
 
+    // React Router redirection
+    const history = useHistory();
+
     /**
      * Open drawer
      * @returns void
@@ -87,24 +90,12 @@ const SearchAppBar = () => {
         dispatch({type: "SET_FILTERED_BOOKS", payload: filteredBooks});
     }
 
-    /**
-     * Returns distinct articles from cart
-     * @param {Object} cart
-     * @returns array
-     */
-    const getDistinctCartArticles = (cart) => {
-
-        const unique_articles = {};
-        let isbn;
-
-        cart.articles.map(article => {
-            isbn = article.isbn;
-            unique_articles[isbn] = article;
-        })
-
-        return Object.keys(unique_articles);
-    }
     console.info(`[${COMPONENT_NAME}] getDistinctCartArticles: `, getDistinctCartArticles(cart));
+
+    const redirectToCartView = () => {
+        //document.location.href = '/cart'; // KO
+        history.push('/cart');
+    }
 
     return (
         <div className={classes.root}>
@@ -137,7 +128,7 @@ const SearchAppBar = () => {
                         />
                     </div>
 
-                    <IconButton aria-label="show 4 article(s)" color="inherit">
+                    <IconButton aria-label="show 4 article(s)" color="inherit" onClick={redirectToCartView}>
                         <Badge badgeContent={getDistinctCartArticles(cart).length} color="secondary">
                             <ShoppingCartIcon />
                         </Badge>

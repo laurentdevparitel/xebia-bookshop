@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 // -- Material UI
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Typography from "@material-ui/core/Typography";
 
 // -- Components
 import ShowCaseBook from '../ShowCase/ShowCaseBook';
@@ -14,7 +15,6 @@ import Loader from '../Loader/Loader';
 
 // -- API
 import API from '../../api/API.js';
-import Typography from "@material-ui/core/Typography";
 
 const api = new API();
 
