@@ -31,13 +31,16 @@ export const searchOnProperty = (data = [], value = '', property) => {
 //                            Cart / Articles
 //-------------------------------------------------------------------------
 
+export const TAX_RATE = 0.055;
+
 /**
  * Returns distinct articles from cart
  * @param {Object} cart
- * @returns array
+ * @param {Boolean} returnIdsOnly
+ * @returns Array
  */
-export const getDistinctCartArticles = (cart) => {
-    console.info(`[${FILE_NAME}.getDistinctCartArticles]`, cart);
+export const getDistinctCartArticles = (cart, returnIdsOnly= false) => {
+    //console.info(`[${FILE_NAME}.getDistinctCartArticles]`, cart, returnIdsOnly);
 
     const distinctArticlesObj = {};
     let isbn;
@@ -46,6 +49,9 @@ export const getDistinctCartArticles = (cart) => {
         isbn = article.isbn
         distinctArticlesObj[isbn] = article;
     })
+    if (returnIdsOnly){
+        return Object.keys(distinctArticlesObj);
+    }
 
     const distinctArticles = [];
     for (let isbn in distinctArticlesObj) {
@@ -53,17 +59,6 @@ export const getDistinctCartArticles = (cart) => {
     }
     return distinctArticles;
 }
-
-/**
- * Format number
- * @param {Number} num
- * @returns String
- */
-export const ccyFormat = (num) => {
-    return `${num.toFixed(2)}`;
-}
-
-export const TAX_RATE = 0.055;
 
 /**
  * Returns cart summary
@@ -152,7 +147,20 @@ const getArticleQuantity = (articles = [], id) => {
 }
 
 //-------------------------------------------------------------------------
-//                            Utils ..
+//                            String
+//-------------------------------------------------------------------------
+
+/**
+ * Format number
+ * @param {Number} num
+ * @returns String
+ */
+export const ccyFormat = (num) => {
+    return `${num.toFixed(2)}`;
+}
+
+//-------------------------------------------------------------------------
+//                            Utils
 //-------------------------------------------------------------------------
 
 /**

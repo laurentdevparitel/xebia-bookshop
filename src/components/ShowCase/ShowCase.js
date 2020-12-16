@@ -51,9 +51,8 @@ const ShowCase = () => {
 
     useEffect(() => {
 
-        dispatch({type: "SET_IS_XHR_RUNNING", payload: true});
-
         setLoading(true);
+        dispatch({type: "SET_IS_XHR_RUNNING", payload: loading});
 
         (async function fetchData(){
 
@@ -64,6 +63,7 @@ const ShowCase = () => {
             .catch(error => {
                 console.error(`[${COMPONENT_NAME}.useEffect] error`, error);
                 setLoading(true);
+                dispatch({type: "SET_IS_XHR_RUNNING", payload: loading});
 
                 // TODO : handle error message to global view ...
                 /*if (typeof(error.response) === "undefined" && error instanceof Error) {
@@ -85,6 +85,7 @@ const ShowCase = () => {
 
                 // hide loader
                 setLoading(false);
+                dispatch({type: "SET_IS_XHR_RUNNING", payload: loading});
             }
 
         })();

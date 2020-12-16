@@ -90,7 +90,7 @@ export default class API {
       })
       // .catch(error => {
       //     // TODO : 404 ...
-      //     console.error(`[${this.constructor.name}.getElearning]`, error.response);
+      //     console.error(`[${this.constructor.name}.getBooks]`, error.response);
       // })
       //.finally(() => this.setState({ loading: false }))
 
@@ -104,23 +104,22 @@ export default class API {
     /**
     * Get commercialOffers for a book
       ex : http://henri-potier.xebia.fr/books/c8fabf68-8374-48fe-a7ea-a00ccd07afff/commercialOffers
-    * @param {string} isbn
+    * @param {Array} ids
     * @returns Promise
     */
-    getBookCommercialOffers = async (isbn) => {
-      console.info(`[${this.constructor.name}.login]`, isbn);
+    getBookCommercialOffers = async (ids) => {
+      console.info(`[${this.constructor.name}.getBookCommercialOffers]`, ids);
 
-      const APIRoute = `${this.BASE_URL}/books/${isbn}/commercialOffers`;
+      const APIRoute = `${this.BASE_URL}/books/${ids.join(",")}/commercialOffers`;
 
       const response = await axios.get(APIRoute)
       .then(json => {
-          //console.log(`[${this.constructor.name}.getBooks] json`, json);
-          const commercialOffers = json.data.data;
-          return commercialOffers;
+          //console.log(`[${this.constructor.name}.getBookCommercialOffers] json`, json);
+          return json.data;
       })
       // .catch(error => {
       //     // TODO : 404 ...
-      //     console.error(`[${this.constructor.name}.getElearning]`, error.response);
+      //     console.error(`[${this.constructor.name}.getBookCommercialOffers]`, error.response);
       // })
       //.finally(() => this.setState({ loading: false }))
 
