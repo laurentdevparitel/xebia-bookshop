@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 // -- Material UI
 import { makeStyles } from '@material-ui/core/styles';
@@ -14,7 +14,6 @@ import Slide from '@material-ui/core/Slide';
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
 import Card from "@material-ui/core/Card";
 
 import styles from "./ShowCaseBookStyles";

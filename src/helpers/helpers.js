@@ -117,7 +117,7 @@ export const getCartSummary = (cart) => {
  * @returns Object
  */
 export const getCartArticle = (id, articles) => {
-    console.info(`[${FILE_NAME}.getCartArticle]`, id, articles);
+    //console.info(`[${FILE_NAME}.getCartArticle]`, id, articles);
 
     let foundArticle = null;
     articles.forEach(article => {
@@ -132,10 +132,10 @@ export const getCartArticle = (id, articles) => {
  * Returns article qty
  * @param {Array} articles
  * @param {Int} id
- * @returns int
+ * @returns Number
  */
-const getArticleQuantity = (articles = [], id) => {
-    //console.info(`[${FILE_NAME}.getArticleQuantity] articles`, articles);
+export const getArticleQuantity = (articles = [], id) => {
+    //console.info(`[${FILE_NAME}.getArticleQuantity]`, articles, id);
 
     let qty = 0;
     articles.forEach(article => {
@@ -144,6 +144,64 @@ const getArticleQuantity = (articles = [], id) => {
         }
     });
     return qty;
+}
+
+/**
+ * Returns best discount
+ * @param {Array} articles
+ * @param {Int} id
+ * @returns Float
+ */
+export const getDiscount = (cartSummary, commercialOffers) => {
+    //console.info(`[${FILE_NAME}.getDiscount]`, cartSummary, commercialOffers);
+
+    const total_amount_without_discount = cartSummary.total_amount_without_taxes;   // NB : HT !
+    let discount = 0;
+    const discounts = {};   // store discount type > discount
+
+    if (typeof (commercialOffers.offers) === "undefined"){  // no offers
+        return discount;
+    }
+
+    // compute discount for each offer type
+    let offer;
+    for (let key in commercialOffers.offers){
+        offer = commercialOffers.offers[key];
+
+        switch (offer.type){
+
+            case 'percentage':
+                discounts[offer.type] = total_amount_without_discount * (offer.value/100);
+                break;
+
+            case 'minus':
+                discounts[offer.type] = offer.value;
+                break;
+
+            case 'slice':
+                if (typeof (offer.sliceValue) === "undefined" || offer.sliceValue === 0){
+                    throw new Error(`Division by 0 !`);
+                }
+                discounts[offer.type] = parseInt(total_amount_without_discount / offer.sliceValue) * offer.value;
+                break;
+        }
+    }
+    //console.log(`[${FILE_NAME}.getDiscount] discounts:`, discounts);
+
+    // get best discount
+    const sortables = [];
+    for (let type in discounts){
+        sortables.push(discounts[type]);
+    }
+    // reverse sort
+    sortables.sort((a,b) => {
+        return b - a;
+    });
+    //console.log(`[${FILE_NAME}.getDiscount] sortables:`, sortables);
+
+    discount = sortables.shift();
+
+    return discount;
 }
 
 //-------------------------------------------------------------------------

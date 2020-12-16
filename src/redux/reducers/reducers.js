@@ -26,6 +26,7 @@ const initialState = {
     cart: { // current cart
         articles: [],
         updated_at: null,
+        discount: 0,    // applied discount
     },
 };
 
@@ -78,11 +79,11 @@ const rootReducer = (state = initialState, action) => {
 };
 
 // Remove an item inside items Array
-const removeItem = (items, index) =>
+/*const removeItem = (items, index) => {
     //items.slice(0, index-1).concat(items.slice(index, items.length))  // KO
     items.filter(function(value, i) {
         return i !== index;
     });
-
+}*/
 
 export default rootReducer;

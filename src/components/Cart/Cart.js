@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 
 // -- Redux
 import {useDispatch, useSelector} from "react-redux";
 
-import {TAX_RATE, ccyFormat, getCartSummary, getDistinctCartArticles} from '../../helpers/helpers';
+import {TAX_RATE, ccyFormat, getCartSummary, getDistinctCartArticles, getDiscount} from '../../helpers/helpers';
 
 // -- Material UI
 import {makeStyles} from '@material-ui/core/styles';
@@ -106,6 +106,10 @@ const Cart = () => {
 
             if (typeof fetchedBookCommercialOffers !== "undefined") {
                 console.debug(`[${COMPONENT_NAME}.useEffect] fetchedBookCommercialOffers: `, fetchedBookCommercialOffers);
+
+                // update cart total amount with fetchedBookCommercialOffers
+                const discount = getDiscount(cartSummary, fetchedBookCommercialOffers);
+                console.debug(`[${COMPONENT_NAME}.useEffect] discount: `, discount);
 
                 // hide loader
                 setLoading(false);
