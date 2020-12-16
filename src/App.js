@@ -15,7 +15,7 @@ import ShowCaseView from './views/ShowCaseView';
 import CartView from './views/CartView';
 import NoMatchView from './views/NoMatchView';
 
-const IS_HOME_PAGE_COMPLETED  = false;
+const IS_HOME_PAGE_COMPLETED  = true;
 
 function App() {
   return (

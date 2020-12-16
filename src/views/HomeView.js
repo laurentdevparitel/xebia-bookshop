@@ -1,7 +1,7 @@
 import React     from 'react';
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Typography from "@material-ui/core/Typography";
-//import Home  from "../components/Home";
+import Home  from "../components/Home/Home";
 
 const HomeView = () => {
     return (
@@ -12,7 +12,7 @@ const HomeView = () => {
                 </Breadcrumbs>
             </div>
 
-            <Typography color="textPrimary">Welcome to Xebia Bookshop !</Typography>
+            <Home />
         </div>
     );
 };

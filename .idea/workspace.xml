@@ -4,9 +4,10 @@
     <list default="true" id="6680f050-1dbb-4237-97bc-d7e82983e89f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/CartView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/CartView.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/HomeView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/HomeView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/NoMatchView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/NoMatchView.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/ShowCaseView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/ShowCaseView.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +57,7 @@
       <option name="presentableId" value="Default" />
       <updated>1607272080381</updated>
       <workItem from="1607272084861" duration="18032000" />
-      <workItem from="1607786383901" duration="61856000" />
+      <workItem from="1607786383901" duration="63566000" />
     </task>
     <servers />
   </component>

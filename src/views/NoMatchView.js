@@ -7,7 +7,7 @@ const NoMatchView = () => {
     const location = useLocation();
 
     return (
-        <div className="view">
+        <div className="view-container">
             <h3>
                 Error 404 : No match view for <code>{location.pathname}</code>
             </h3>
